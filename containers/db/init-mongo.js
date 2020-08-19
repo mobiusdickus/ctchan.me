@@ -5,7 +5,7 @@ db.createUser(
     roles: [
       {
         role: "readWrite",
-        db: "ctchan-db"
+        db: "db-ctchan"
       }
     ]
   }
