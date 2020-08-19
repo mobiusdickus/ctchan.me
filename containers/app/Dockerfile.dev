@@ -1,0 +1,15 @@
+## Stage 1: Build react app
+FROM node:10.13-alpine as build-app
+
+WORKDIR /app
+
+# Install dependencies
+COPY package.json yarn.lock ./
+RUN yarn
+#RUN yarn upgrade
+
+# Add the project
+COPY . ./
+
+# Run the dev frontend with react-scripts
+CMD ["yarn", "run", "start"]
