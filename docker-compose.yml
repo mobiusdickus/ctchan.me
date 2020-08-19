@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+
+  server:
+    build: ./containers/nginx/
+    container_name: server
+    volumes:
+      - ./containers/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+    networks:
+      - frontend
+      - backend
+    ports:
+      - 80:80
+
+  app:
+    build:
+      context: ./containers/app/
+      dockerfile: Dockerfile.dev
+    container_name: app
+    environment:
+      NODE_ENV: 'development'
+      CHOKIDAR_USEPOLLING: 'true'
+    volumes:
+      - ./containers/app/src:/app/src
+      - ./containers/app/public:/app/public
+    networks:
+      - frontend
+    expose:
+      - 3000
+
+  api:
+    build:
+      context: ./containers/api/
+      dockerfile: Dockerfile.dev
+    container_name: api
+    environment:
+      FLASK_ENV: 'development'
+    volumes:
+      - ./containers/api/src:/srv/src
+    networks:
+      - backend
+    expose:
+      - 8080
+
+  db:
+    image: mongo:latest
+    container_name: db
+    environment:
+      MONGO_INITDB_DATABASE: '${MONGO_INITDB_DATABASE}'
+      MONGO_INITDB_ROOT_USERNAME: '${MONGO_INITDB_ROOT_USERNAME}'
+      MONGO_INITDB_ROOT_PASSWORD: '${MONGO_INITDB_ROOT_PASSWORD}'
+    volumes:
+      - ./containers/db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./containers/db/mongo-volume:/data/db
+    networks:
+      - backend
+    restart: unless-stopped
+    command: mongod --auth
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+  mongodb:
+    driver: local
