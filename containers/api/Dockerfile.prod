@@ -11,13 +11,13 @@ RUN chown -R api /srv
 USER api
 
 # Install Python dependencies
-ADD Pipfile Pipfile.lock ./
+ADD ./containers/api/Pipfile ./containers/api/Pipfile.lock ./
 RUN pipenv install
 
 # Add the project
-ADD ./src ./src
-ADD ./config/gunicorn.py ./
-ADD setup.py ./
+ADD ./containers/api/src ./src
+ADD ./containers/api/config/gunicorn.py ./
+ADD ./containers/api/setup.py ./
 RUN pipenv run python setup.py develop
 
 ENV FLASK_APP src
