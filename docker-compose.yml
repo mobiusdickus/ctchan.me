@@ -2,9 +2,9 @@ version: '3'
 
 services:
 
-  server:
+  server-ctchan:
     build: ./containers/nginx/
-    container_name: server
+    container_name: server-ctchan
     volumes:
       - ./containers/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
     networks:
@@ -13,11 +13,11 @@ services:
     ports:
       - 80:80
 
-  app:
+  app-ctchan:
     build:
       context: ./containers/app/
       dockerfile: Dockerfile.dev
-    container_name: app
+    container_name: app-ctchan
     environment:
       NODE_ENV: 'development'
       CHOKIDAR_USEPOLLING: 'true'
@@ -29,11 +29,11 @@ services:
     expose:
       - 3000
 
-  api:
+  api-ctchan:
     build:
       context: ./containers/api/
       dockerfile: Dockerfile.dev
-    container_name: api
+    container_name: api-ctchan
     environment:
       FLASK_ENV: 'development'
     volumes:
