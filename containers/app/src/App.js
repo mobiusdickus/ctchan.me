@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
+import Contact from './components/Contact/Contact';
+import CantTouchThis from './components/CantTouchThis/CantTouchThis';
 
 function App() {
-  const [data, setData] = useState("");
-
-  useEffect(() => {
-    fetch("/api/contact").then(response =>
-      response.json().then(data => {
-        console.log(data);
-        setData(data.data);
-      })
-    );
-  }, []);
 
   return (
     <div className="App">
@@ -19,9 +11,8 @@ function App() {
         <h1>
           Colin Chan
         </h1>
-        <p>
-          {data}
-        </p>
+        <Contact />
+        <CantTouchThis />
       </header>
     </div>
   );
