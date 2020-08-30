@@ -14,9 +14,7 @@ function Contact() {
   }, []);
 
   return (
-    <div>
-      {data}
-    </div>
+    <div>{data}</div>
   );
 }
 
