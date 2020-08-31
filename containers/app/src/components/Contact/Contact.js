@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import GetApiData from '../../hooks/GetApiData';
 
 
 function Contact() {
-  const [data, setData] = useState("");
-
-  useEffect(() => {
-    fetch("/api/contact").then(response =>
-      response.json().then(data => {
-        console.log(data);
-        setData(data.data);
-      })
-    );
-  }, []);
+  const [apiData] = GetApiData("/api/contact");
+  const contactData = apiData.data.data;
 
   return (
-    <div>{data}</div>
+    <div>{ contactData }</div>
   );
 }
 
