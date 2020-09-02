@@ -3,7 +3,6 @@ import axios from 'axios';
 
 function GetApiData(url) {
   // This is just for demo purposes, you probably want to separate the data from loading state and potentially add other states such as failures, etc..
-  const [endpointUrl] = useState(url);
   const [apiData, setData] = useState({ data: [] }); 
   const [dataState, setDataState] = useState({ isFetching: false });
 
@@ -11,7 +10,7 @@ function GetApiData(url) {
     const fetchDataFromApi = async () => {
       try {
         setDataState({ ...dataState, isFetching: true });
-        const response = await axios.get(endpointUrl);
+        const response = await axios.get(url);
         setData({ ...apiData, data: response.data });
         setDataState({ ...dataState, isFetching: false });
       } catch (e) {
@@ -21,6 +20,7 @@ function GetApiData(url) {
       }
     };
     fetchDataFromApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Runs once
 
   return [apiData];
