@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function GetApiData(url) {
+function UseApiData(url) {
   // This is just for demo purposes, you probably want to separate the data from loading state and potentially add other states such as failures, etc..
   const [apiData, setData] = useState({ data: [] }); 
   const [dataState, setDataState] = useState({ isFetching: false });
@@ -26,4 +26,4 @@ function GetApiData(url) {
   return [apiData];
 };
 
-export default GetApiData;
+export default UseApiData;

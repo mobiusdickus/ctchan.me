@@ -1,9 +1,9 @@
 import React from 'react';
-import GetApiData from '../../hooks/GetApiData';
+import UseApiData from '../../hooks/UseApiData';
 
 
 function Contact() {
-  const [apiData] = GetApiData("/api/contact");
+  const [apiData] = UseApiData("/api/contact");
   const contactData = apiData.data.data;
 
   return (
