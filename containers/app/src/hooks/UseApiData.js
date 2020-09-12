@@ -4,7 +4,7 @@ import axios from 'axios';
 function UseApiData(url) {
   // This is just for demo purposes, you probably want to separate the data from loading state and potentially add other states such as failures, etc..
   const [apiData, setData] = useState({ data: [] }); 
-  const [dataState, setDataState] = useState({ isFetching: false });
+  const [dataState, setDataState] = useState({ isFetching: true });
 
   useEffect(() => {
     const fetchDataFromApi = async () => {
@@ -23,7 +23,7 @@ function UseApiData(url) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Runs once
 
-  return [apiData];
+  return [apiData, dataState];
 };
 
 export default UseApiData;
