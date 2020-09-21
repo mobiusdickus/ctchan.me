@@ -2,7 +2,7 @@ import React from 'react';
 import UseApiData from '../../hooks/UseApiData';
 
 
-function Contact() {
+function contact() {
   const [apiData, dataState] = UseApiData("/api/contact");
   console.log("apiData: ", apiData);
   console.log("dataState: ", dataState);
@@ -32,4 +32,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default contact;

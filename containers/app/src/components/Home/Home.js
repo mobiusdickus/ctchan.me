@@ -4,7 +4,7 @@ import './Home.css';
 import Navigation from '../Navigation/Navigation';
 
 
-function Home() {
+function home() {
   return (
     <div className="home">
       <header className="home-header">
@@ -15,4 +15,4 @@ function Home() {
   );
 };
 
-export default Home;
+export default home;

@@ -1,5 +1,6 @@
 from flask import (
     Blueprint,
+    jsonify
 )
 
 
@@ -13,4 +14,11 @@ def main():
 
 @bp.route('/contact', methods=['GET'])
 def test():
-    return {'data': 'colin at ctchan dot me'}
+    # return { 'data': 'colin@ctchan.me' }
+    return jsonify({
+        'data': {
+            'name': 'Colin Chan',
+            'email': 'colin@ctchan.me',
+            'github': 'mobiusdickus',
+        }
+    })

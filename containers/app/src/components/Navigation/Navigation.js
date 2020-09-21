@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-function Navigation() {
+function navigation() {
   const linkStyle = {
     textDecoration: 'none',
     color: 'white'
@@ -35,4 +35,4 @@ function Navigation() {
   );
 };
 
-export default Navigation;
+export default navigation;
