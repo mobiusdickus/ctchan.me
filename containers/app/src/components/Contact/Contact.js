@@ -1,9 +1,13 @@
 import React from 'react';
+import useApiData from '../../hooks/UseApiData';
 
-function contact() {
+function Contact() {
+  const [contactData, dataState] = useApiData('/api/contact');
+  const email = contactData.data.data;
+
   return (
-    <div></div>    
+    <div>{email}</div>    
   );
 };
 
-export default contact;
+export default Contact;
