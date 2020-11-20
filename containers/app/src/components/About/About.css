@@ -1,8 +1,8 @@
-.Contact {
+.About {
   text-align: center;
 }
 
-.Contact-header {
+.About-header {
   display: flex;
   flex-direction: column;
   align-items: center;
