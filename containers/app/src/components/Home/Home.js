@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Link
+} from 'react-router-dom';
+
 
 import './Home.css';
 
@@ -10,6 +15,10 @@ function Home() {
           Colin Chan
         </h1>
       </header>
+      <div>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+      </div>
     </div>
   );
 };
