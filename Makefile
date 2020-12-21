@@ -9,3 +9,7 @@ build:
 
 run:
 	docker-compose -f docker-compose.yml up
+
+clear-images:
+	docker rm $$(docker ps -aq)
+	docker rmi $$(docker images -q) -f
